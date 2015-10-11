@@ -29,8 +29,7 @@ ADD nginx/webapp.conf /etc/nginx/sites-enabled/webapp.conf
 # Add the rails app
 ADD railsapp /home/app/webapp
 
-# change ownership to the app user for passenger and create log file
-RUN touch /home/app/webapp/log/production.log
+# change ownership to the app user for passenger
 RUN chown -R app:app /home/app/webapp
 
 WORKDIR /home/app/webapp
