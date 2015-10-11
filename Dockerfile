@@ -29,8 +29,9 @@ ADD nginx/webapp.conf /etc/nginx/sites-enabled/webapp.conf
 # Add the rails app
 ADD railsapp /home/app/webapp
 
-# change ownership to the app user for passenger
+# change ownership to the app user for passenger and create log file
 RUN chown -R app:app /home/app/webapp
+RUN chmod 664 -R /home/app/webapp/log/production.log
 
 WORKDIR /home/app/webapp
 RUN RAILS_ENV=production bundle exec rake assets:precompile
